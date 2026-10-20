@@ -1,0 +1,10 @@
+name: prt-probe
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, closed, edited, labeled, unlabeled, assigned, unassigned, review_requested, review_request_removed, converted_to_draft, ready_for_review, locked, unlocked, auto_merge_enabled, auto_merge_disabled, milestoned, demilestoned, enqueued, dequeued]
+permissions: {}
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ACTION=${{ github.event.action }} SENDER=${{ github.event.sender.login }} ACTOR=${{ github.actor }} TRIG=${{ github.triggering_actor }}"
